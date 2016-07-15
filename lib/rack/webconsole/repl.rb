@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'multi_json'
+require 'json'
 require 'digest/sha1'
 
 module Rack
@@ -69,7 +69,7 @@ module Rack
 
         $sandbox ||= Sandbox.new
         hash = Shell.eval_query params['query']
-        response_body = MultiJson.encode(hash)
+        response_body = JSON.generate(hash)
         headers = {}
         headers['Content-Type'] = 'application/json'
         headers['Content-Length'] = response_body.bytesize.to_s
