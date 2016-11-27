@@ -12,6 +12,9 @@ Gem::Specification.new do |s|
   s.description = %q{Rack-based console inside your web applications}
 
   s.rubyforge_project = "rack-webconsole"
+  
+  fail 'RubyGems 2.0 or newer is required to protect against public gem pushes.' unless spec.respond_to?(:metadata)
+  spec.metadata['allowed_push_host'] = 'http://gemstash.service.consul:8080/private'
 
   s.add_runtime_dependency 'rack'
   s.add_runtime_dependency 'ripl', '~> 0.5.1'
